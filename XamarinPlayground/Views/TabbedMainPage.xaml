@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:st="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             android:TabbedPage.IsSwipePagingEnabled="False"
+             android:TabbedPage.IsSmoothScrollEnabled="false"
+             x:Class="XamarinPlayground.Views.TabbedMainPage">
+
+	<NavigationPage.TitleView>
+		<Grid ColumnDefinitions="100,*,100" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsTitleVisible}">
+			<Label Grid.Column="0" Text="hi" TextColor="White" HorizontalOptions="StartAndExpand" />
+		</Grid>
+	</NavigationPage.TitleView>
+
+</TabbedPage>

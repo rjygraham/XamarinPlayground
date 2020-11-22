@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:st="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+			 xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+			 xmlns:templates="clr-namespace:XamarinPlayground.Templates"
+              BackgroundColor="White"
+              Title="Home"
+             x:Class="XamarinPlayground.Views.HomePage">
+
+	<ContentPage.Resources>
+		<Style x:Key="FABPrimary" TargetType="Button">
+			<Setter Property="CornerRadius">
+				<OnPlatform iOS="25" Android="100"/>
+			</Setter>
+			<Setter Property="BackgroundColor" Value="Green" />
+			<Setter Property="TextColor" Value="white" />
+			<Setter Property="FontSize" Value="Title" />
+			<Setter Property="HeightRequest" Value="55"/>
+			<Setter Property="WidthRequest" Value="55"/>
+			<Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+			<Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+		</Style>
+	</ContentPage.Resources>
+
+	<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+		<CollectionView ItemsSource="{Binding Photos}">
+			<CollectionView.ItemTemplate>
+				<templates:PhotoTemplate />
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+		<sh:Shadows 
+			AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+			Margin="0,0,15,15"
+			Shades="{sh:SingleShade Offset='0, 5', BlurRadius=10, Opacity=0.2, Color='Black'}">
+			<sh:Shadows.CornerRadius>
+				<OnPlatform x:TypeArguments="x:Int32">
+					<On Platform="Android" Value="100" />
+					<On Platform="iOS" Value="25" />
+				</OnPlatform>
+			</sh:Shadows.CornerRadius>
+
+			<Button IsVisible="True"
+				Text="+"
+                Style="{StaticResource FABPrimary}" />
+		</sh:Shadows>
+
+	</AbsoluteLayout>
+
+</ContentPage>

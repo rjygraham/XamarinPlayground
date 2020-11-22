@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms"
+			  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			  xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+			   xmlns:st="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+			    xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+			  xmlns:vm="clr-namespace:XamarinPlayground.ViewModels"
+			  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+			  x:Class="XamarinPlayground.Templates.PhotoTemplate">
+	<sh:Shadows 
+			AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+			Margin="0, 0, 0, 20"
+			Shades="{sh:SingleShade Offset='0, 2', BlurRadius=5, Opacity=0.2, Color='Black'}">
+		<Frame BackgroundColor="White" Margin="0, 0, 0, 10" Padding="20">
+			<StackLayout>
+				<Label Text="{Binding description}" />
+				<ffimageloading:CachedImage
+			Aspect="AspectFit"
+			DownsampleToViewSize="true"
+			HorizontalOptions="FillAndExpand"
+			Source="{Binding urls.regular}">
+					<ffimageloading:CachedImage.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding ImageTappedCommand, Source={RelativeSource AncestorType={x:Type vm:HomePageViewModel}}}" CommandParameter="{Binding .}" />
+					</ffimageloading:CachedImage.GestureRecognizers>
+				</ffimageloading:CachedImage>
+			</StackLayout>
+		</Frame>
+	</sh:Shadows>
+	
+</DataTemplate>
